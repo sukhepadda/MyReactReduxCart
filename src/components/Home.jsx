@@ -19,6 +19,12 @@ function Home() {
             price: 60000,
             imgSrc: img2,
             id: "2",
+        },
+        {
+            name: "Fake Iphone",
+            price: 600,
+            imgSrc: img2,
+            id: "3",
         }
     ];
 
@@ -26,6 +32,7 @@ function Home() {
 
     const addToCartHandler = (options) => {
         dispatch({type:"addToCart", payload:options})
+        dispatch({type: "calculatePrice"})
         toast.success("Added to Card");
     };
     return (

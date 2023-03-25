@@ -3,25 +3,30 @@ import CartItem from './CartItem'
 import { useDispatch, useSelector } from 'react-redux';
 
 function Cart() {
-    const { cartItems } = useSelector((state) => state.cart);
+    const { cartItems, subTotal, tax, shipping, total } = useSelector((state) => state.cart);
     const dispatch = useDispatch();
     const increment = (id) => {
         dispatch({
             type: "addToCart",
             payload: { id },
-        })
+        });
+        dispatch({ type: "calculatePrice" });
+
     };
     const decrement = (id) => {
         dispatch({
             type: "decrement",
             payload: id,
-        })
+        });
+        dispatch({ type: "calculatePrice" });
     };
     const deleteHandler = (id) => {
         dispatch({
             type: "deleteHandler",
             payload: id,
-        })
+        });
+        dispatch({ type: "calculatePrice" });
+
     };
 
 
@@ -48,10 +53,10 @@ function Cart() {
                 }
             </main>
             <aside>
-                <h2>SubTotal: ${2000}</h2>
-                <h2>Shipping: ${200}</h2>
-                <h2>Tax: ${20}</h2>
-                <h2>Total: ${1220}</h2>
+                <h2>SubTotal: ₹{subTotal}</h2>
+                <h2>Shipping: ₹{shipping}</h2>
+                <h2>Tax: ₹{tax}</h2>
+                <h2>Total: ₹{total}</h2>
             </aside>
         </div>
     )
