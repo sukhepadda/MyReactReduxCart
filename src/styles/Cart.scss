@@ -1,0 +1,35 @@
+.cart {
+  height: 100vh;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  > main {
+    padding: 2rem;
+    overflow-y: auto;
+    &::-webkit-scrollbar{
+        display: none;
+    }
+    > h1 {
+      color: $tertiary;
+      font: 100 2rem "Roboto";
+    }
+  }
+  > aside {
+    border-radius: 100px 0 0 100px;
+    background-color: $primary;
+    color: $tertiary;
+    height: 100%;
+    width: 100%;
+    box-shadow: -10px 0px 10px rgba(0, 0, 0, 0.182);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    > h2 {
+      margin: 1rem;
+      font: 100 1.8rem "Roboto";
+      letter-spacing: 2px;
+      &:last-of-type {
+        font-weight: 600;
+      }
+    }
+  }
+}
